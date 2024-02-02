@@ -15,9 +15,10 @@ endif
 
 let g:loaded_indent_guide = 1
 
+let s:state = 0
+
 let s:bars  = get(g:, 'indent_guide_bar_count',    10)
 let s:quiet = get(g:, 'indent_guide_silence',       0)
-let s:state = get(g:, 'indent_guide_startup_state', 0)
 
 let &textwidth = s:bars * &tabstop
 
