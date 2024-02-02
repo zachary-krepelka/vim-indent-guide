@@ -1,9 +1,9 @@
 " FILENAME: indent-guide.vim
 " AUTHOR: Zachary Krepelka
 " DATE: Sunday, January 28th, 2024
-" ORIGIN: https://github.com/zachary-krepelka/vim-indent-guide
+" ORIGIN: https://github.com/zachary-krepelka/vim-indent-guide.git
 " DESCRIPTION: An indentation guide for the Vim text editor
-" UPDATED: Thursday, February 1st, 2024 at 9:09 PM
+" UPDATED: Thursday, February 1st, 2024 at 10:27 PM
 
 " Variables {{{1
 
@@ -204,4 +204,4 @@ nnoremap <expr> <unique> <silent> <Right>
 \
 \	<SID>is_active() ? <SID>adjustBarCount(1)  : '<Right>'
 \
-nnoremap <silent> <Leader>i :call <SID>toggle()<CR>
+nnoremap <unique> <silent> <Leader>i :call <SID>toggle()<CR>
