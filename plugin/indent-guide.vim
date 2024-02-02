@@ -205,3 +205,16 @@ nnoremap <expr> <unique> <silent> <Right>
 \	<SID>is_active() ? <SID>adjustBarCount(1)  : '<Right>'
 \
 nnoremap <unique> <silent> <Leader>i :call <SID>toggle()<CR>
+
+" Menus {{{1
+
+if has("gui_running") && has("menu") && &go =~# 'm'
+
+	amenu <silent> &Plugin.Indent\ Guide.&Tabify  :Tabify<CR>
+	amenu <silent> &Plugin.Indent\ Guide.&Spacify :Spacify<CR>
+	amenu <silent> &Plugin.Indent\ Guide.&Help
+	\
+	\	:tab help vim vim-indent-guide<CR>
+
+endif
+
