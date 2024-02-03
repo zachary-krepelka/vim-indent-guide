@@ -1,0 +1,336 @@
+*vim-indent-guide.txt*	An indentation guide for the Vim text editor
+*vim-indent-guide*
+
+ __   ___         ___         _         _      ___      _    _      ~
+ \ \ / (_)_ __   |_ _|_ _  __| |___ _ _| |_   / __|_  _(_)__| |___  ~
+  \ V /| | '  \   | || ' \/ _` / -_) ' \  _| | (_ | || | / _` / -_) ~
+   \_/ |_|_|_|_| |___|_||_\__,_\___|_||_\__|  \___|\_,_|_\__,_\___| ~
+
+Author:   Zachary Krepelka
+Date:     Thursday, February 1st, 2024
+
+Origin: https://github.com/zachary-krepelka/vim-indent-guide
+
+================================================================================
+
+TABLE OF CONTENTS 0                                 *indent-guide-contents* {{{1
+
+1. Introduction   ...............................   |indent-guide-intro|
+2. Usage   ......................................   |indent-guide-usage|
+3. Examples   ...................................   |indent-guide-examples|
+4. Customization   ..............................   |indent-guide-customization|
+5. Remarks   ....................................   |indent-guide-remarks|
+
+================================================================================
+
+INTRODUCTION      1                                    *indent-guide-intro* {{{1
+
+   This plugin provides an indentation guide for the Vim text editor.  A series
+of evenly-spaced bars are drawn across the screen.  Each bar is separated from
+the last by one tabstop.  This continues until the textwidth is reached.
+
+   The user can dynamically adjust the tabstop and textwidth using the arrow
+keys with the help of a visual aid.  Facilities are also provided for altering
+the indentation of a file, i.e., changing spaces to tabs and vice versa. >
+
+	BEFORE
+
+			+---------------------------------------+
+			|class Integer                          |
+			|    def totatives                      |
+			|        fail unless positive?          |
+			|        1.upto(self).select do |i|     |
+			|            gcd(i) == 1                |
+			|        end                            |
+			|    end                                |
+			|end                                    |
+			|~                                      |
+			|~                                      |
+			|-- INSERT --                           |
+			+---------------------------------------+
+
+	AFTER
+
+			+---------------------------------------+
+			|cla|s I|teg|r  |   |   |   |   |   |   |
+			|   |def|tot|tiv|s  |   |   |   |   |   |
+			|   |   |fai| un|ess|pos|tiv|?  |   |   |
+			|   |   |1.u|to(|elf|.se|ect|do |i| |   |
+			|   |   |   |gcd|i) |= 1|   |   |   |   |
+			|   |   |end|   |   |   |   |   |   |   |
+			|   |end|   |   |   |   |   |   |   |   |
+			|end|   |   |   |   |   |   |   |   |   |
+			|~                                      |
+			|~                                      |
+			|-- INSERT --                           |
+			+---------------------------------------+
+
+Use your favorite plugin manager for installation.
+
+================================================================================
+
+USAGE             2                                    *indent-guide-usage* {{{1
+
+2.1 MAPPINGS {{{2~
+                                                         *indent-guide-mappings*
+There are five mappings.
+                                                           *indent-guide-toggle*
+	<Leader>i
+
+		Toggle the plugin on and off.  The 'i' stands for '[i]ndent.'
+
+			- When the plugin activated, a series of evenly
+			  spaced bars are drawn across the screen.
+
+				Each bar is separated from the last by one
+				|tabstop| up until the |textwidth| is reached.
+				The textwidth itself is made to be a multiple of
+				the tabstop.
+
+					The arrow keys are then given a
+					special functionality as
+					described below.
+
+						   [^]
+						[<][V][>]
+
+					The h, j, k, and l keys are left
+					untouched.  You should be using
+					them anyways.
+
+			- When the plugin is deactivated, the bar are cleared
+			  from the screen and control is returned to the arrow
+			  keys.  Changes to the |tabstop| and |textwidth| are
+			  still in effect.
+
+                                                             *indent-guide-down*
+	<Down>
+		Decrease the spread between the bars.
+
+			Namely, decrement |tabstop| by one and adjust the
+			|textwidth| accordingly wherein the number of bars
+			remains the same.  Then redraw the indent guide.
+
+                                                               *indent-guide-up*
+	<Up>
+		Increase the spread between the bars.
+
+			Namely, increment |tabstop| by one and adjust the
+			|textwidth| accordingly wherein the number of bars
+			remains the same.  Then redraw the indent guide.
+
+                                                             *indent-guide-left*
+	<Left>
+		  Subtract one bar.
+
+			Namely, decrement |textwidth| by |tabstop|.
+			Then redraw the indentation guide.
+
+                                                            *indent-guide-right*
+	<Right>
+		  Add one bar.
+
+			Namely, increment |textwidth| by |tabstop|.
+			Then redraw the indentation guide.
+
+2.2 MESSAGES {{{2~
+                                                         *indent-guide-messages*
+
+Whenever the indentation guide is redrawn, a message will appear at the bottom
+of the screen, usually indicating a change.  It will look something like this. >
+
+		tw 80 ts 8 bars 10
+
+Here's what it means.
+
+	- `tw 80` tells you that the 'textwidth' is 80 characters wide.
+
+	- `ts 8` tells you that the 'tabstop' is 8 characters.
+
+		This means that a tab counts as 8 spaces.
+
+	- `bars 10` tells you that there are 10 bars on the screen.
+
+2.3 COMMANDS {{{2~
+                                                         *indent-guide-commands*
+
+Two commands are provided for dealing with indentation.  They are also available
+from the menu in gvim, under `Plugin -> Indent Guide -> command.`
+
+                                                                       *:Tabify*
+	:[range]Tabify [N]
+
+		Change leading spaces into tabs over [range].
+
+			Here [N] is the number of spaces that counts as a tab.
+			It defaults to the current value of |tabstop|.
+
+				Visual confirmation ensues.
+				See |s_c| under |s_flags|.
+
+                                                                      *:Spacify*
+	:[range]Spacify [N]
+
+		Change leading tabs into spaces over [range].
+
+			Here [N] is the number of spaces that counts as a tab.
+			It defaults to the current value of |tabstop|.
+
+				Visual confirmation ensues.
+				See |s_c| under |s_flags|.
+
+	2.2.1 REMARK ~
+
+	The above commands convert tabs into spaces and vice versa.  Vim already
+	provides build-in support for this with the |retab| command.  My
+	commands offer the following advantages.
+
+		- They only change leading whitespace.
+
+		- They provide visual confirmation.
+
+		- They do not depend on the value of 'expandtab'.
+
+		- There names are semantically superior.  Compare
+
+		  	- Spacify versus retab
+
+			- Tabify versus retab!
+
+2.4 SENSIBLE DEFAULTS {{{2~
+
+Here are some sensible defaults that work well with this plugin. >
+
+	set textwidth = 80
+	set tabstop = 8
+
+Put them in your |vimrc| file.
+
+}}}
+
+================================================================================
+
+EXAMPLES          3                                 *indent-guide-examples* {{{1
+
+3.1 FIRST USE CASE {{{2~
+
+I take my notes in plain text.  I use indentation to organize information.
+The indentation guide helps me keep track of where I'm at.
+
+3.2 SECOND USE CASE {{{2~
+
+The beauty of the tab character is that it separates data from presentation.  We
+can dynamically adjust the appearance of a file without changing the file
+itself.  This can help to make code more manageable to read. >
+
+ BEFORE                                   AFTER
+ +-----------------------------------+    +-----------------------------------+
+ |for i until px                     |    |for i until px                     |
+ |  for j until px                   |    |        for j until px             |
+ |    color(i, j, black)             |    |                color(i, j, black) |
+ |  end                              |    |        end                        |
+ |end                                |    |end                                |
+ |~                                  |    |~                                  |
+ |-- INSERT --                       |    |-- INSERT --                       |
+ +-----------------------------------+    +-----------------------------------+
+
+Using this plugin, the depicted scenario can be accomplished with the arrow
+keys, provided that tab characters are used.  You can go back and forth easily.
+
+3.3 THIRD USE CASE {{{2~
+
+Use this plugin in conjunction with |<|, |>|, and |gq| to easily create
+cascading blocks of free-floating text, like this. >
+
+	Lorem ipsum dolor sit
+	amet, consectetur
+	adipiscing elit. Quisque
+	auctor ut orci a tempor.
+	Nunc massa lacus, tempus
+	a enim nec, tincidunt
+	sodales turpis. Nullam.
+
+		Integer laoreet turpis arcu, sed
+		hendrerit tellus convallis quis.
+		Cras pharetra convallis tortor
+		sed pellentesque. Mauris sapien
+		dui, efficitur quis consequat
+		ac, euismod id mauris.
+
+			Nunc tempus, nulla commodo aliquam
+			aliquet, quam erat pharetra nunc, sit
+			amet fringilla magna eros at risus.
+			Praesent scelerisque mauris tellus, ut
+			dapibus mauris tempor.
+
+}}}
+
+================================================================================
+
+CUSTOMIZATION     4                            *indent-guide-customization* {{{1
+
+4.1 VARIABLES {{{2~
+                                                       *indent-guide-variables*
+
+Customization is achieved by setting variables in your |.vimrc| file.
+
+*g:indent_guide_bar_count*	(default: 10)
+
+	The number of bars that initially appear on the screen.
+	You can choose your own number like this. >
+
+		let g:indent_guide_bar_count = 8
+
+*g:indent_guide_silence*	(default: 0)
+
+	You can tell this plugin to be quiet like this. >
+
+		let g:indent_guide_silence = 1
+<
+	See |indent-guide-messages|.
+
+*g:indent_guide_forced_color*	(default: n/a)
+
+It is usually enough to set your preferred color in your |vimrc| like this. >
+
+	highlight ColorColumn ctermbg=green
+<
+		See |indent-guide-colors|.
+
+However, sometimes other plugins will overwrite this.  Goyo.vim is one of them.
+To force your preferred color, add this to your vimrc. >
+
+	let g:indent_guide_forced_color = 'green'
+<
+4.2 COLORS {{{2~
+                                                           *indent-guide-colors*
+
+To customize the color of the bars, add this to your vimrc. >
+
+	highlight ColorColumn {key}={arg}
+
+To highlight leading tabs, add this to your vimrc. >
+
+	highlight LeadingTabs {key}={arg}
+
+Here's an example. >
+
+	hi ColorColumn ctermbg=green guibg=green
+
+}}}
+
+================================================================================
+
+REMARKS           5                                  *indent-guide-remarks* {{{1
+
+The following variables are effected.
+
+	- 'textwidth'
+	- 'tabstop'
+	- 'colorcolumn'
+
+Mappings to the arrow keys are overwritten.
+
+================================================================================
+UPDATED: Saturday, February 3rd, 2024 at 3:48 PM
+vim:tw=80:ts=8:ft=help:fdm=marker
