@@ -3,7 +3,7 @@
 " DATE: Sunday, January 28th, 2024
 " ORIGIN: https://github.com/zachary-krepelka/vim-indent-guide.git
 " DESCRIPTION: An indentation guide for the Vim text editor
-" UPDATED: Thursday, February 1st, 2024 at 10:27 PM
+" UPDATED: Saturday, February 3rd, 2024 at 1:03 PM
 
 " Variables {{{1
 
@@ -210,11 +210,11 @@ nnoremap <unique> <silent> <Leader>i :call <SID>toggle()<CR>
 
 if has("gui_running") && has("menu") && &go =~# 'm'
 
+	amenu <silent> &Plugin.Indent\ Guide.&On/Off  :call <SID>toggle()<CR>
 	amenu <silent> &Plugin.Indent\ Guide.&Tabify  :Tabify<CR>
 	amenu <silent> &Plugin.Indent\ Guide.&Spacify :Spacify<CR>
 	amenu <silent> &Plugin.Indent\ Guide.&Help
 	\
-	\	:tab help vim vim-indent-guide<CR>
+	\	:tab help vim-indent-guide<CR>
 
 endif
-
