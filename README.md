@@ -22,33 +22,33 @@ Use your favorite plugin manager for installation.
 ## Example
 
 ```text
-	BEFORE
+BEFORE
 
-			+---------------------------------------+
-			|class Integer                          |
-			|    def totatives                      |
-			|        fail unless positive?          |
-			|        1.upto(self).select do |i|     |
-			|            gcd(i) == 1                |
-			|        end                            |
-			|    end                                |
-			|end                                    |
-			|~                                      |
-			|-- INSERT --                           |
-			+---------------------------------------+
+		+---------------------------------------+
+		|class Integer                          |
+		|    def totatives                      |
+		|        fail unless positive?          |
+		|        1.upto(self).select do |i|     |
+		|            gcd(i) == 1                |
+		|        end                            |
+		|    end                                |
+		|end                                    |
+		|~                                      |
+		|-- INSERT --                           |
+		+---------------------------------------+
 
-	AFTER
+AFTER
 
-			+---------------------------------------+
-			|cla|s I|teg|r  |   |   |   |   |   |   |
-			|   |def|tot|tiv|s  |   |   |   |   |   |
-			|   |   |fai| un|ess|pos|tiv|?  |   |   |
-			|   |   |1.u|to(|elf|.se|ect|do |i| |   |
-			|   |   |   |gcd|i) |= 1|   |   |   |   |
-			|   |   |end|   |   |   |   |   |   |   |
-			|   |end|   |   |   |   |   |   |   |   |
-			|end|   |   |   |   |   |   |   |   |   |
-			|~                                      |
-			|-- INSERT --                           |
-			+---------------------------------------+
+		+---------------------------------------+
+		|cla|s I|teg|r  |   |   |   |   |   |   |
+		|   |def|tot|tiv|s  |   |   |   |   |   |
+		|   |   |fai| un|ess|pos|tiv|?  |   |   |
+		|   |   |1.u|to(|elf|.se|ect|do |i| |   |
+		|   |   |   |gcd|i) |= 1|   |   |   |   |
+		|   |   |end|   |   |   |   |   |   |   |
+		|   |end|   |   |   |   |   |   |   |   |
+		|end|   |   |   |   |   |   |   |   |   |
+		|~                                      |
+		|-- INSERT --                           |
+		+---------------------------------------+
 ```
