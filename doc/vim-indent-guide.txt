@@ -145,7 +145,7 @@ Here's what it means.
 
 	- `tw 80` tells you that the 'textwidth' is 80 characters wide.
 
-	- `ts 8` tells you that the 'tabstop' is 8 characters.
+	- `ts 8` tells you that the 'tabstop' is set to 8.
 
 		This means that a tab counts as 8 spaces.
 
@@ -191,7 +191,7 @@ from the menu in gvim, under `Plugin -> Indent Guide -> command.`
 
 		- They do not depend on the value of 'expandtab'.
 
-		- There names are semantically superior.  Compare
+		- Their names are semantically superior.  Compare
 
 		  	- Spacify versus retab
 
