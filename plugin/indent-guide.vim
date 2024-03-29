@@ -1,9 +1,9 @@
 " FILENAME: indent-guide.vim
 " AUTHOR: Zachary Krepelka
 " DATE: Sunday, January 28th, 2024
+" ABOUT: An indentation guide for the Vim text editor
 " ORIGIN: https://github.com/zachary-krepelka/vim-indent-guide.git
-" DESCRIPTION: An indentation guide for the Vim text editor
-" UPDATED: Saturday, February 3rd, 2024 at 1:03 PM
+" UPDATED: Friday, March 29th, 2024 at 1:34 PM
 
 " Variables {{{1
 
@@ -20,6 +20,7 @@ let s:state = 0
 let s:bars  = get(g:, 'indent_guide_bar_count',    10)
 let s:quiet = get(g:, 'indent_guide_silence',       0)
 
+let s:save     = [ s:bars, &tabstop ]
 let &textwidth = s:bars * &tabstop
 
 " Highlights {{{1
@@ -115,6 +116,14 @@ function! s:adjustBarCount(flag)
 
 endfunction
 
+function! s:resetIndentGuide()
+
+	let [ &tabstop, s:bars ] = s:save
+	let &textwidth = s:bars * &tabstop
+	call s:drawIndentGuide()
+
+endfunction
+
 function! s:clearIndentGuide()
 
 	match none
@@ -205,6 +214,7 @@ nnoremap <expr> <unique> <silent> <Right>
 \	<SID>is_active() ? <SID>adjustBarCount(1)  : '<Right>'
 \
 nnoremap <unique> <silent> <Leader>i :call <SID>toggle()<CR>
+nnoremap <unique> <silent> <Leader>I :call <SID>resetIndentGuide()<CR>
 
 " Menus {{{1
 

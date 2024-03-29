@@ -73,7 +73,7 @@ USAGE             2                                    *indent-guide-usage* {{{1
 
 2.1 MAPPINGS {{{2~
                                                          *indent-guide-mappings*
-There are five mappings.
+There are six mappings.
                                                            *indent-guide-toggle*
 	<Leader>i
 
@@ -102,6 +102,12 @@ There are five mappings.
 			  from the screen and control is returned to the arrow
 			  keys.  Changes to the |tabstop| and |textwidth| are
 			  still in effect.
+
+                                                            *indent-guide-reset*
+	<Leader>I
+
+		Reset the indentation guide by assuming defaults.
+		Parallels |indent-guide-toggle| with a capital I.
 
                                                              *indent-guide-down*
 	<Down>
@@ -240,7 +246,7 @@ keys, provided that tab characters are used.  You can go back and forth easily.
 3.3 THIRD USE CASE {{{2~
 
 Use this plugin in conjunction with |<|, |>|, and |gq| to easily create
-cascading blocks of free-floating text, like this. >
+cascading blocks of free-floating text with variable width, like this. >
 
 	Lorem ipsum dolor sit
 	amet, consectetur
@@ -332,5 +338,5 @@ The following variables are effected.
 Mappings to the arrow keys are overwritten.
 
 ================================================================================
-UPDATED: Saturday, February 3rd, 2024 at 3:48 PM
+UPDATED: Friday, March 29th, 2024 at 1:30 PM
 vim:tw=80:ts=8:ft=help:fdm=marker
