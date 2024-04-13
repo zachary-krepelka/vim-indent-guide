@@ -79,7 +79,7 @@ There are six mappings.
 
 		Toggle the plugin on and off.  The 'i' stands for '[i]ndent.'
 
-			- When the plugin activated, a series of evenly
+			- When the plugin is activated, a series of evenly
 			  spaced bars are drawn across the screen.
 
 				Each bar is separated from the last by one
