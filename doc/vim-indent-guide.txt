@@ -98,7 +98,7 @@ There are six mappings.
 					untouched.  You should be using
 					them anyways.
 
-			- When the plugin is deactivated, the bar are cleared
+			- When the plugin is deactivated, the bars are cleared
 			  from the screen and control is returned to the arrow
 			  keys.  Changes to the |tabstop| and |textwidth| are
 			  still in effect.
