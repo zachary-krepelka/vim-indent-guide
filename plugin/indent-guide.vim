@@ -3,7 +3,7 @@
 " DATE: Sunday, January 28th, 2024
 " ABOUT: An indentation guide for the Vim text editor
 " ORIGIN: https://github.com/zachary-krepelka/vim-indent-guide.git
-" UPDATED: Friday, March 29th, 2024 at 1:34 PM
+" UPDATED: Friday, November 1st, 2024 at 6:49 PM
 
 " Variables {{{1
 
@@ -118,7 +118,7 @@ endfunction
 
 function! s:resetIndentGuide()
 
-	let [ &tabstop, s:bars ] = s:save
+	let [ s:bars, &tabstop ] = s:save
 	let &textwidth = s:bars * &tabstop
 	call s:drawIndentGuide()
 
